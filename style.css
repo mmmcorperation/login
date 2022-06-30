@@ -1,0 +1,113 @@
+.page-full-bg,.error-page {
+	background:rgb(240, 243, 244);
+	opacity: 1;
+	background-size: cover;
+}
+
+.gcu-header{
+	display:none;
+}
+.form-checkbox span:after,.btn-main,.btn-main:hover {
+	background: #0151ad;
+}
+.checkbox-block a,.checkbox-block a:hover,.btn-secondary,.footer-links a:hover, .error-page a,.error-page a:hover {
+	color: #0151ad;
+}
+
+.btn-secondary:hover {
+	color: #0151ad;
+	border-color: #0151ad;
+}
+
+.header-main.is-fixed{
+	background: #8F895B;
+	opacity: 1;
+	background-size: cover;
+}
+
+.header-nav-mobile{
+	background: #0151ad;
+	opacity: 0.9;
+	background-size: cover;
+}
+
+.container a{
+	color: #0151ad;
+}
+
+.container a.btn-main{
+        color: #fff;
+}
+
+.card-after-links a{
+	color: #8F895B;
+}
+
+linearGradient#background-color,linearGradient#background-color-u2f,linearGradient#background-color-u2f-2 {
+	--color-stop-1: #8F895B;
+	--color-stop-2: #8F895B;
+}
+
+.cookieinfo-close {
+	background: #209bcb!important;
+}
+
+.cookieinfo a{
+	color: #8F895B!important;
+}
+
+/*CUSTOM*/
+footer.footer-main{
+	background: none;
+	color: #8F895B;
+	display:none;
+}
+
+
+.footer-bottom{
+	text-align: right;
+}
+
+h1.gcu-header {
+	font-weight: 600;
+	color: #8F895B;
+	font-size: 28px;
+	padding-top: 3px;
+}
+
+.form-checkbox span:after,.btn-main,.btn-main:hover {
+	font-size: 20px;
+}
+
+.header-main-logo.small {
+	max-width: 300px;
+}
+
+.form-checkbox span {
+	display: none;
+}
+
+@media (max-width: 768px){
+.header-main-logo.small {
+		max-width: 150px;
+	}
+
+	h1.gcu-header {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+.page.no-menu {
+		padding-top: 30px;
+	}
+
+.card.has-width-limit {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+.card.has-width-limit{
+		margin-top: 1rem!important;
+	}
+}
