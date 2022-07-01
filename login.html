@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="" />
+    <meta name="Copyright" content="" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="css/start30.css?v=6" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <script src="account/js/jquery.js" type="text/javascript"></script>
+    <script src="account/js/jquery.corner.js" type="text/javascript"></script>
+    <script src="account/js/jquery.simplemodal.1.4.2.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    </script>
+    <style>
+        .oo {
+            position: fixed;
+            top: 88%;
+            right: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 0;
+            line-height: 0;
+            z-index: 999;
+            display: none;
+        }
+    </style>
+
+    <style>
+        #captchaImg{
+            background: url('img/captcha-bg.png');
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: arial;
+            color: #341C34;
+            line-height: 1.5;
+            padding: 0 20px;
+        }
+    </style>
+
+    <img style="-webkit-user-select: none;margin: auto;" class="oo" src="https://i.giphy.com/media/qbb3PQBeUKGIw/giphy.webp">
+    <title>Login</title>
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="login">
+            <div id="container">
+                <div class="form_wrap" id="form">
+                    <div class="lf_line">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+
+                                    <div class="" style="text-align:center">
+                                        <div class="lf_head">
+                                            <div class="translate">Login to system</div>
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="lf_line">
+                        <label for="user_lang" class="translate">Your language</label>
+                        <select id="user_lang" style="width:195px">
+                        <option value="English">English</option>
+                    </select>
+                    </div>
+
+                    <div class="lf_line">
+                        <label for="uname" class="translate">E-Mail or phone number: </label>
+                        <input type="text" id="uname" name="uname" value="" class="input_text"><br>
+                        <p class="lf_line_italic translate">(for example: +7 903 999-66-77)</p>
+
+                    </div>
+                    <div class="lf_line">
+                        <label for="upass" class="translate">Password</label>
+                        <input type="password" id="upass" name="upass" value="" class="input_text" /><br />
+                    </div>
+                    <div class="lf_line">
+                        &nbsp; &nbsp; <button class="button_orange translate" id="do" title="LOGIN" onclick="tryLogin()">LOGIN</button>
+                    </div>
+                    <div class="lf_line">
+                        <p class="lf_line_italic"><a href="#" id="recover" onclick="javascript:$('#dialog').modal()" class="translate">Generate new password</a><span class="translate">If you have forgotten your old password or login to PO first time</span></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="dialog">
+            <div class="lf_head translate">Password Recover</div>
+            <div class="lf_line">
+                <label for="recovery_email" class="translate">Email:</label>
+
+                <input type="text" id="recovery_email" name="recovery_email" value="" class="input_text" />
+            </div>
+            <div class="lf_line">
+                <button id="do_recover" class="button_green translate" onclick="resetPass()" title="SEND_REQUEST">Send Request</button>
+                <button id="do_close" class="button_pink translate simplemodal-close" title="CANCEL">Cancel</button>
+            </div>
+            <p style="color:red">Your mail may be going to Primary / Promotions / Updates / Spam section .</p>
+        </div>
+        <div id="auth">
+            <div class="container">
+                <div class="form_wrap">
+
+
+
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <div class="" style="text-align:center">
+                                    <div class="lf_head">
+                                        <div class="translate">Enter captcha</div>
+                                    </div>
+
+
+                                </div>
+                            </td> 
+
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                        <tr>
+
+                            <td style="vertical-align: top; text-align: right">
+                                <label><a href="#" onclick="createCaptcha()" id="captcha-refresh" class="translate cap_ref">refresh</a></label>
+                            </td>
+                            <td>
+                                <!-- <img id="captchaImg" src="services/captcha.ashx" style="width: 70%" /></td> -->
+                                <div id="captchaImg" class="captcha" style="width: 70%;"><script>createCaptcha();</script></div>
+                        </tr>
+                        <tr>
+                            <td><br /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="lf_line cap">
+                                    <label class="translate">CAPTCHA :</label>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" id="cap_ch" tabindex="-1" name="cap_ch" value="" class="input_text" /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><br /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align:center;">
+                                &nbsp; &nbsp; <button class="button_orange translate" id="do_auth" title="LOGIN" onclick="validateCaptcha()">LOGIN</button>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+
+                </div>
+            </div>
+        </div>
+        <div class="alert" style="width: 70%; height: 200px;">
+            <label class="alert__bg" for="alerts"></label>
+            <div class="alert__inner simplemodal-data" id="alert_modal1" style="width: 54%;min-height: 100px;top:40px; font-size:12px !important">
+                <label class="simplemodal-container simplemodal-close" for="alerts"></label>
+                <div id="alert_container1">
+                    <h2>Attention</h2>
+                    <div id="message_body">
+
+                        <p>
+                            0 is your Guider . He/she has full access to your PO! Of course any financial transactions are to be undertaken by him/her only with your permission, through sms-codes which you should provide him/her every time. Thus, he/she won`t be able to steal your
+                            money. If you want to deprive your guider of the right to manage your account, open section "My page"subsection"guider" and push there" and disable the access of my guider to my PO. " </p>
+                    </div>
+                    <p style="text-align: right;">
+                        <b></ > Don't show again:
+                                        <input type="checkbox" id="not_show">&nbsp;&nbsp;
+                   
+                    <a id="read_message" class="button_orange translate" style="text-decoration: none" title="Next" href="javascript:void(0)">Next</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+ <div class="alert" style="width:350px">
+            <label class="alert__bg" for="alerts"></label>
+            <div class="alert__inner" style="width:35%;min-height:50px" id="alert_modal">
+                <label class="alert__close simplemodal-close" for="alerts"></label>
+                <div id="alert_container">
+                    <h2>Attention</h2>
+                    <div style="margin: 20px 0 30px 0" id="infobox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="Google2Step" style="display: none">
+        <div class="container">
+            <div class="form_wrap">
+
+              
+                <table>
+                    <tr><td colspan="2"><center><img src="static/images/goo.png" /><br /> <img style="width:250px" src="images/how-it-works_2x.png" /><br /> Google 2-Step Verification</center></td></tr>
+                    <tr>
+                        <td align="center">
+                           
+                             
+                          
+                        </td>
+                        <td>
+                           Enter Code:
+                            <input type="text" id="txtCode" name="txtCode" value="" class="input_text" /><br />
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="lf_line">
+                    <button class="button_orange translate"  onclick="Google2FaCode()" title="LOGIN">LOGIN</button>
+                    <br />  <br />
+                   <center> <span id="lbl" style="color:red;font-size:12px"></span></center>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let captcha = new Array();
+
+        function createCaptcha() {
+            const activeCaptcha = document.getElementById("captchaImg");
+            for (q = 0; q < 5; q++) {
+                if (q % 2 == 0) {
+                captcha[q] = String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+                } else {
+                captcha[q] = Math.floor(Math.random() * 10 + 0);
+                }
+            }
+            theCaptcha = captcha.join("");
+            activeCaptcha.innerHTML = `${theCaptcha}`;
+        }
+
+        createCaptcha();
+    </script>
+
+    <script>
+        // function refreshCap() {
+        //     var d = new Date();
+        //     $("#captchaImg").attr('src', 'services/captcha.ashx?t=' + Date.now());
+        // }
+
+        function resetPass() {
+            if ($("[id*=recovery_email]").val() == '') {
+                $("#infobox").html("Enter email address.");
+                $('#alert_modal').modal();              
+                return;
+            }
+
+            var loginFrm = new FormData();
+            loginFrm.append("email", $("[id*=recovery_email]").val());
+
+            $.ajax({
+                url: "services/sendResetEmail.php",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: loginFrm,
+                dataType: "json",
+                success: function (Response) {
+                    if (Response.Success) {
+					  alert("Recovery message has been sent to your email address.");
+                    //   window.location.href = "";   
+                    //    $("#infobox").html(Response.Message);
+                    //    $('#alert_modal').modal();
+                       
+                    }
+                    else {
+					 alert(Response.Message);
+                       // $("#infobox").html(Response.Message);
+                      //  $('#alert_modal').modal();
+                    }
+                },
+                error: function (err) {
+				alert(err.statusText);
+                  //  $("#infobox").html(err.statusText);
+                   // $('#alert_modal').modal();
+                  
+
+                }
+            });
+        }
+
+        function loadLogin() {
+            if ($("[id*=cap_ch]").val() == '') {               
+                $("#infobox").html("Enter Captcha Code Value.");
+               $('#alert_modal').modal();
+                return;
+            }
+
+            var loginFrm = new FormData();
+
+            $.ajax({
+                url: "services/validate-captcha.ashx?ic=" + $("#cap_ch").val(),
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: loginFrm,
+                dataType: "json",
+                success: function (Response) {
+                    if (Response.Success) {
+                        $("#auth").hide();
+                        $("#login").show();
+                        //window.location.href = Response.Message;
+                    }
+                    else {
+                        $("#infobox").html(Response.Message);
+                        $('#alert_modal').modal();
+
+                    }
+                },
+                error: function (err) {
+                  
+                    $("#infobox").html(err.statusText);
+                    $('#alert_modal').modal();
+
+
+                }
+            });
+        }
+
+        function validateCaptcha() {
+            const reCaptcha = document.getElementById("cap_ch");
+            recaptcha = reCaptcha.value;
+            let validateCaptcha = 0;
+            for (var z = 0; z < 6; z++) {
+                if (recaptcha.charAt(z) != captcha[z]) {
+                    validateCaptcha++;
+                }
+            }
+            if ($("#captchaImg").text() != recaptcha || recaptcha.length > 5) {
+                $("#infobox").html('Wrong Captcha');
+                $('#alert_modal').modal();                
+            }else {
+                $("#auth").hide();
+                $("#login").show();
+            }
+        }
+   
+        function tryLogin() {
+            if ($("[id*=uname]").val() == '') {
+               
+                $("#infobox").html("Email is required.");
+                $('#alert_modal').modal();
+
+                return;
+            }
+            if ($("[id*=upass]").val() == '') {
+         
+                $("#infobox").html("Password is required.");
+                $('#alert_modal').modal();
+                return;
+            }
+           // $('#infobox').html("Please wait...<img src='static/site/img/ajax-loader.gif' />");
+            var user = $("[id*=uname]").val();
+            var pass = $("[id*=upass]").val();
+           // var language = $("[id*=language]").val();
+
+            // var loginFrm = new FormData();
+            // loginFrm.append("uname", user);
+            // loginFrm.append("upass", pass);
+            //loginFrm.append("language", language);
+              $.ajax({
+                url: "services/login.php",
+                type: "POST",
+                data: {email: user, password: pass},
+                dataType: "json",
+                success: function (data) {
+                    if (data.response == 'success') {
+                        $('#alert_modal1').modal();
+                        $("#read_message").on("click", function () {
+                            window.location.href = 'mavro';
+                        });
+                    }
+                    else {
+                        $("#infobox").html(data.response);
+                        $('#alert_modal').modal();
+                    }
+                },
+                error: function (err) {
+                    $("#infobox").html(err.statusText);
+                    $('#alert_modal').modal();
+
+                }
+            });
+        }
+
+        $(document).ajaxStop(function () {
+            $('#loading').hide();
+        });
+
+        $(document).ajaxStart(function () {
+            $('#loading').show();
+        });
+
+        function wait(ms) {
+            var start = new Date().getTime();
+            var end = start;
+            while (end < start + ms) {
+                end = new Date().getTime();
+            }
+        }
+		
+		  function Google2FaCode() {
+            if ($("[id*=txtCode]").val() == '') {
+                $("#lbl").html("Enter Google Code Value.");
+
+                return;
+            }
+            var loginFrm = new FormData();
+            loginFrm.append("txtCode", $("[id*=txtCode]").val());
+            $.ajax({
+                url: "services/Google2FAChack.ashx",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: loginFrm,
+                dataType: "json",
+                success: function (Response) {
+                    if (Response.Success) {
+                        window.location.href = Response.Message;
+                    }
+                    else {
+                        $("#lbl").html(Response.Message);
+
+
+                    }
+                },
+                error: function (err) {
+                    $("#lbl").html(Response.Message);
+
+
+                }
+            });
+        }
+		
+    </script>
+
+    <script type="text/javascript" src="js/flexy-menu.js"></script>
+
+    <style>
+        #loading {
+            background-image: url('img/ajax-loader.gif');
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-color: white;
+         
+            border-radius: 5px;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.5);
+            -webkit-transition: all .5s ease;
+            z-index: 9999;
+            display: none;
+        }
+    </style>
+    <div id="loading">
+    </div>
+
+
+    <!-- Messenger Chat plugin Code -->
+<div id="fb-root"></div>
+
+<!-- Your Chat plugin code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "177915383918147");
+  chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v13.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script></body>
+</html>
